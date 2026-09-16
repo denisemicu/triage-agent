@@ -1,0 +1,35 @@
+policy_version: "mock-2026-09"
+
+# Mock policy to show process 
+
+criteria:
+  registered_business:
+    type: boolean_equals
+    field: registered_business
+    value: true
+    required: true
+
+  minimum_employees:
+    type: numeric_gte
+    field: employee_count
+    value: 10
+    required: true
+
+  supported_region:
+    type: enum_in
+    field: region
+    values:
+      - United States
+      - Canada
+      - United Kingdom
+      - Australia
+    required: true
+
+  eligible_service:
+    type: list_intersects
+    field: service_model
+    values:
+      - consulting
+      - implementation
+      - managed_services
+    required: true
